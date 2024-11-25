@@ -515,6 +515,9 @@ impl Settings {
                                 })?
                                 .compile_matcher();
 
+                            println!("glob: {}", source.glob());
+                            println!("regex: {}", source.glob().regex());
+
                             let pattern = source
                                 .glob()
                                 .regex()
@@ -522,6 +525,9 @@ impl Settings {
                                 .replace("?:.*", ".*")
                                 .replace("?:", "")
                                 .replace(".*.*", ".*")
+                                .replace(r"\(", "(")
+                                .replace(r"\)", ")")
+                                .replace(r"\+", "+")
                                 .to_owned();
                             tracing::debug!(
                                 "url redirects glob pattern: {}",
