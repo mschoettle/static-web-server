@@ -469,12 +469,12 @@ impl Settings {
 
                             let pattern = source
                                 .glob()
-                                .regex()
-                                .trim_start_matches("(?-u)")
-                                .replace("?:.*", ".*")
-                                .replace("?:", "")
-                                .replace(".*.*", ".*")
-                                .to_owned();
+                                .regex();
+                                // .trim_start_matches("(?-u)")
+                                // .replace("?:.*", ".*")
+                                // .replace("?:", "")
+                                // .replace(".*.*", ".*")
+                                // .to_owned();
                             tracing::debug!(
                                 "url rewrites glob pattern: {}",
                                 &rewrites_entry.source
